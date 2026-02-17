@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Card - Demo Visuelle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      /* Colors */
+      --color-bg-primary: #000000;
+      --color-bg-secondary: #0A0A0A;
+      --color-bg-tertiary: #121212;
+      --color-lavender-soft: #D1C4E9;
+      --color-lavender-medium: #B39DDB;
+      --color-lavender-dark: #9575CD;
+      --color-cyan-soft: #80DEEA;
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: #B0B0B0;
+      --color-text-muted: #9E9E9E;
+      
+      /* Spacing */
+      --spacing-sm: 12px;
+      --spacing-md: 20px;
+      --spacing-lg: 32px;
+      
+      /* Border radius */
+      --radius-md: 8px;
+      --radius-sm: 4px;
+      
+      /* Transitions */
+      --transition-default: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    body {
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      font-family: 'Inter', sans-serif;
+      padding: 60px 20px;
+      min-height: 100vh;
+    }
+    
+    .demo-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .demo-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .demo-header h1 {
+      font-size: 2.5rem;
+      color: var(--color-lavender-soft);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .demo-header p {
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+    }
+    
+    .blog-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
+      margin-bottom: 60px;
+    }
+    
+    @media (min-width: 768px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+    }
+    
+    /* BLOG CARD COMPONENT */
+    
+    .blog-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .blog-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-lavender-dark);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all var(--transition-default);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .blog-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px rgba(179, 157, 219, 0.6);
+    }
+    
+    .blog-card:active {
+      transform: scale(0.98);
+    }
+    
+    .blog-card:focus-within {
+      outline: 2px solid var(--color-cyan-soft);
+      outline-offset: 2px;
+    }
+    
+    /* Glitch effect on hover */
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+      20% {
+        transform: translate(-2px, 2px);
+      }
+      40% {
+        transform: translate(2px, -2px);
+      }
+      60% {
+        transform: translate(-2px, -2px);
+      }
+      80% {
+        transform: translate(2px, 2px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+    
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .blog-card:hover::before {
+      animation: glitch 0.2s ease-in-out;
+      opacity: 0.3;
+      mix-blend-mode: screen;
+    }
+    
+    .blog-card__image-wrapper {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .blog-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    
+    .blog-card__content {
+      padding: var(--spacing-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+    
+    .blog-card__date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .blog-card__tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    
+    .blog-card__tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-lavender-soft);
+      background: rgba(179, 157, 219, 0.1);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(179, 157, 219, 0.2);
+    }
+    
+    .blog-card__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .blog-card__excerpt {
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+      .blog-card__image-wrapper {
+        height: 180px;
+      }
+      
+      .blog-card__title {
+        font-size: 1.125rem;
+      }
+      
+      .blog-card__content {
+        padding: 16px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .blog-card__image-wrapper {
+        height: 220px;
+      }
+    }
+    
+    /* Accessibility: Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .blog-card {
+        transition: none;
+      }
+      
+      .blog-card:hover {
+        animation: none;
+      }
+      
+      .blog-card:hover::before {
+        animation: none;
+      }
+    }
+    
+    /* Demo notes section */
+    .demo-notes {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-lavender-dark);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin-top: 60px;
+    }
+    
+    .demo-notes h2 {
+      color: var(--color-lavender-soft);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .demo-notes ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .demo-notes li {
+      color: var(--color-text-secondary);
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .demo-notes li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--color-lavender-medium);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <header class="demo-header">
+      <h1>Blog Card Component</h1>
+      <p>Demo interactive - Kurdant.fr</p>
+    </header>
+    
+    <div class="blog-grid">
+      <!-- Card 1 -->
+      <a href="#" class="blog-card-link" aria-label="Lire l'article: Introduction à React 18">
+        <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" 
+              alt="React logo sur fond noir"
+              class="blog-card__image"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date" datetime="2026-02-10">10 FEV 2026</time>
+              <div class="blog-card__tags">
+                <span class="blog-card__tag">React</span>
+                <span class="blog-card__tag">Tutorial</span>
+              </div>
+            </div>
+            
+            <h3 class="blog-card__title">Introduction à React 18</h3>
+            
+            <p class="blog-card__excerpt">
+              Découvrez les nouvelles fonctionnalités de React 18, notamment le Concurrent Rendering et les Automatic Batching. Un guide complet pour bien démarrer avec cette version majeure.
+            </p>
+          </div>
+        </article>
+      </a>
+      
+      <!-- Card 2 -->
+      <a href="#" class="blog-card-link" aria-label="Lire l'article: Canvas API et animations performantes">
+        <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&fit=crop" 
+              alt="Code JavaScript sur écran"
+              class="blog-card__image"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date" datetime="2026-02-08">08 FEV 2026</time>
+              <div class="blog-card__tags">
+                <span class="blog-card__tag">Canvas</span>
+                <span class="blog-card__tag">Performance</span>
+              </div>
+            </div>
+            
+            <h3 class="blog-card__title">Canvas API et animations performantes</h3>
+            
+            <p class="blog-card__excerpt">
+              Apprenez à créer des animations fluides avec Canvas API. Techniques d'optimisation, requestAnimationFrame, et bonnes pratiques pour des rendus à 60fps.
+            </p>
+          </div>
+        </article>
+      </a>
+      
+      <!-- Card 3 -->
+      <a href="#" class="blog-card-link" aria-label="Lire l'article: Design System: De la théorie à la pratique">
+        <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" 
+              alt="Palette de couleurs design"
+              class="blog-card__image"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date" datetime="2026-02-05">05 FEV 2026</time>
+              <div class="blog-card__tags">
+                <span class="blog-card__tag">Design</span>
+                <span class="blog-card__tag">UX/UI</span>
+              </div>
+            </div>
+            
+            <h3 class="blog-card__title">Design System: De la théorie à la pratique</h3>
+            
+            <p class="blog-card__excerpt">
+              Comment construire un design system scalable et cohérent. Variables CSS, composants réutilisables, et documentation pour votre équipe.
+            </p>
+          </div>
+        </article>
+      </a>
+      
+      <!-- Card 4 -->
+      <a href="#" class="blog-card-link" aria-label="Lire l'article: Optimisation SEO pour portfolios">
+        <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=600&h=400&fit=crop" 
+              alt="Dashboard analytics"
+              class="blog-card__image"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date" datetime="2026-02-01">01 FEV 2026</time>
+              <div class="blog-card__tags">
+                <span class="blog-card__tag">SEO</span>
+              </div>
+            </div>
+            
+            <h3 class="blog-card__title">Optimisation SEO pour portfolios</h3>
+            
+            <p class="blog-card__excerpt">
+              Les techniques essentielles pour améliorer la visibilité de votre portfolio. Meta tags, structured data, et stratégies de contenu pour développeurs.
+            </p>
+          </div>
+        </article>
+      </a>
+      
+      <!-- Card 5 -->
+      <a href="#" class="blog-card-link" aria-label="Lire l'article: Framer Motion: Animations React avancées">
+        <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=600&h=400&fit=crop" 
+              alt="Interface en mouvement"
+              class="blog-card__image"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date" datetime="2026-01-28">28 JAN 2026</time>
+              <div class="blog-card__tags">
+                <span class="blog-card__tag">Animation</span>
+                <span class="blog-card__tag">React</span>
+              </div>
+            </div>
+            
+            <h3 class="blog-card__title">Framer Motion: Animations React avancées</h3>
+            
+            <p class="blog-card__excerpt">
+              Maîtrisez Framer Motion pour créer des interfaces interactives et fluides. Variants, gestures, et layout animations expliqués en détail.
+            </p>
+          </div>
+        </article>
+      </a>
+      
+      <!-- Card 6 -->
+      <a href="#" class="blog-card-link" aria-label="Lire l'article: Accessibilité web: Les fondamentaux">
+        <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop" 
+              alt="Clavier d'ordinateur"
+              class="blog-card__image"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <time class="blog-card__date" datetime="2026-01-25">25 JAN 2026</time>
+              <div class="blog-card__tags">
+                <span class="blog-card__tag">A11y</span>
+                <span class="blog-card__tag">Web</span>
+              </div>
+            </div>
+            
+            <h3 class="blog-card__title">Accessibilité web: Les fondamentaux</h3>
+            
+            <p class="blog-card__excerpt">
+              Rendre votre site accessible à tous. ARIA, navigation clavier, contrastes, et tests d'accessibilité pour respecter les standards WCAG.
+            </p>
+          </div>
+        </article>
+      </a>
+    </div>
+    
+    <section class="demo-notes">
+      <h2>Notes de la demo</h2>
+      <ul>
+        <li>Hover sur une card pour voir le glitch effect et le glow</li>
+        <li>Le scale est subtil (1.03) pour éviter les layout shifts</li>
+        <li>Les cards sont responsives: 1 colonne mobile, 2 tablette, 3 desktop</li>
+        <li>Les tags ont un background semi-transparent avec bordure</li>
+        <li>La date utilise JetBrains Mono (monospace) en uppercase</li>
+        <li>L'excerpt est tronqué après 3 lignes avec ellipsis</li>
+        <li>Les images utilisent object-fit: cover pour rester proportionnées</li>
+        <li>Focus state visible pour accessibilité keyboard (outline cyan)</li>
+        <li>Respecte prefers-reduced-motion pour utilisateurs sensibles</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

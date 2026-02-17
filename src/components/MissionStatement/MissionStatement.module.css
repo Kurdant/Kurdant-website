@@ -1,0 +1,343 @@
+.missionSection {
+  position: relative;
+  padding: clamp(80px, 10vw, 120px) 24px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.titleFrame {
+  display: inline-block;
+  padding: 16px 48px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #B39DDB;
+  border-radius: 4px;
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.titleFrame::before,
+.titleFrame::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #C7A7FF;
+  box-shadow: 0 0 10px rgba(199, 167, 255, 0.8);
+}
+
+.titleFrame::before {
+  top: -4px;
+  left: -4px;
+}
+
+.titleFrame::after {
+  bottom: -4px;
+  right: -4px;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: #E1BEE7;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 3px;
+  text-shadow: 
+    0 0 10px rgba(225, 190, 231, 0.6),
+    0 0 20px rgba(199, 167, 255, 0.4);
+}
+
+.textBlock {
+  max-width: 800px;
+  margin: 0 auto 64px;
+}
+
+.textBlock p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  line-height: 1.8;
+  color: #E1BEE7;
+  margin: 16px 0;
+  text-shadow: 0 0 15px rgba(225, 190, 231, 0.2);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.serviceCard {
+  width: 200px;
+  height: 200px;
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid #B39DDB;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(179, 157, 219, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199, 167, 255, 0.3), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.serviceCard:hover {
+  border-color: #C7A7FF;
+  box-shadow: 0 0 40px rgba(199, 167, 255, 0.5);
+  transform: translateY(-4px);
+}
+
+.serviceCard:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.serviceIcon {
+  font-size: 48px;
+  z-index: 2;
+}
+
+.serviceTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #E1BEE7;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+  z-index: 2;
+}
+
+.serviceDesc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #B39DDB;
+  text-transform: uppercase;
+  margin: 0;
+  z-index: 2;
+}
+
+.overlays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.wireframeGlobe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-image: 
+    radial-gradient(circle, transparent 45%, rgba(179, 157, 219, 0.1) 46%, transparent 47%),
+    repeating-conic-gradient(from 0deg, rgba(179, 157, 219, 0.05) 0deg 10deg, transparent 10deg 20deg);
+  border-radius: 50%;
+  border: 1px solid rgba(179, 157, 219, 0.15);
+  animation: rotateGlobe 30s linear infinite;
+  z-index: 1;
+}
+
+.dataCard {
+  position: absolute;
+  padding: 16px;
+  background: rgba(17, 17, 17, 0.8);
+  border: 1px solid #9575CD;
+  backdrop-filter: blur(8px);
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 0 15px rgba(149, 117, 205, 0.3);
+}
+
+.dataCardHeader {
+  font-size: 10px;
+  color: #9575CD;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.dataCardContent {
+  font-size: 12px;
+  color: #C7A7FF;
+  font-weight: 600;
+}
+
+.dataCard1 { top: 60px; left: 40px; }
+.dataCard2 { top: 60px; right: 40px; }
+.dataCard3 { bottom: 60px; left: 50%; transform: translateX(-50%); }
+
+.barcode {
+  position: absolute;
+  opacity: 0.4;
+  animation: pulseSlow 3s ease-in-out infinite;
+}
+
+.barcodeLeft {
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 120px;
+  background: repeating-linear-gradient(
+    0deg,
+    #B39DDB 0px,
+    #B39DDB 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.barcodeBottom {
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  background: repeating-linear-gradient(
+    90deg,
+    #B39DDB 0px,
+    #B39DDB 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #E1BEE7;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(225, 190, 231, 0.8);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.star1 { top: 15%; left: 10%; animation-delay: 0s; }
+.star2 { top: 25%; right: 15%; animation-delay: 0.4s; }
+.star3 { top: 60%; left: 20%; animation-delay: 0.8s; }
+.star4 { bottom: 25%; right: 10%; animation-delay: 1.2s; }
+.star5 { bottom: 40%; left: 80%; animation-delay: 1.6s; }
+
+.hexagon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid #9575CD;
+  background: transparent;
+  animation: rotateHexagon 10s linear infinite;
+}
+
+.hexagon1 { top: 20%; left: 15%; }
+.hexagon2 { top: 70%; right: 20%; animation-delay: 3s; }
+.hexagon3 { bottom: 30%; left: 70%; animation-delay: 6s; }
+
+.shard {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid rgba(199, 167, 255, 0.15);
+  animation: floatShard 8s ease-in-out infinite;
+}
+
+.shard1 { top: 20%; left: 8%; animation-delay: 0s; }
+.shard2 { top: 50%; right: 12%; animation-delay: 2s; }
+.shard3 { bottom: 25%; left: 15%; animation-delay: 4s; }
+.shard4 { top: 65%; right: 80%; animation-delay: 6s; }
+
+@keyframes rotateGlobe {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes floatShard {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes rotateHexagon {
+  0% { transform: rotate(0deg); opacity: 0.4; }
+  50% { opacity: 0.7; }
+  100% { transform: rotate(360deg); opacity: 0.4; }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .textBlock {
+    margin-bottom: 48px;
+  }
+
+  .dataCard1,
+  .dataCard2,
+  .dataCard3 {
+    display: none;
+  }
+
+  .wireframeGlobe {
+    width: 250px;
+    height: 250px;
+  }
+
+  .shard,
+  .hexagon {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+}

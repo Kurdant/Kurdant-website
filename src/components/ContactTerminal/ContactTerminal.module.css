@@ -1,0 +1,371 @@
+.contactSection {
+  position: relative;
+  padding: clamp(80px, 10vw, 120px) 24px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.terminal {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #C7A7FF;
+  border-radius: 4px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 30px rgba(199, 167, 255, 0.4),
+    inset 0 0 50px rgba(199, 167, 255, 0.05);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #9575CD;
+}
+
+.promptSymbol {
+  color: #C7A7FF;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.headerText {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  color: #C7A7FF;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(199, 167, 255, 0.6);
+}
+
+.terminalStatus {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.statusLabel {
+  color: #B39DDB;
+}
+
+.statusValue {
+  color: #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+.terminalPrompt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #D1C4E9;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.cursor {
+  animation: blink 1s step-start infinite;
+  color: #C7A7FF;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid #9575CD;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contactLink:hover {
+  border-color: #C7A7FF;
+  box-shadow: 0 0 20px rgba(199, 167, 255, 0.3);
+  transform: translateX(4px);
+}
+
+.contactIcon {
+  font-size: 20px;
+}
+
+.contactPlatform {
+  color: #B39DDB;
+  font-size: 13px;
+  min-width: 80px;
+}
+
+.contactHandle {
+  color: #E1BEE7;
+  font-size: 13px;
+  flex: 1;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 12px 32px;
+  background: transparent;
+  border: 2px solid #C7A7FF;
+  border-radius: 4px;
+  color: #C7A7FF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(199, 167, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+.ctaButton:hover::before {
+  left: 0;
+}
+
+.ctaButton:hover {
+  box-shadow: 
+    0 0 20px rgba(199, 167, 255, 0.6),
+    inset 0 0 20px rgba(199, 167, 255, 0.2);
+  text-shadow: 0 0 10px rgba(199, 167, 255, 0.8);
+}
+
+.overlays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.dataCard {
+  position: absolute;
+  padding: 16px;
+  background: rgba(17, 17, 17, 0.8);
+  border: 1px solid #9575CD;
+  backdrop-filter: blur(8px);
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 0 15px rgba(149, 117, 205, 0.3);
+}
+
+.dataCardHeader {
+  font-size: 10px;
+  color: #9575CD;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.dataCardContent {
+  font-size: 12px;
+  color: #C7A7FF;
+  font-weight: 600;
+}
+
+.dataCard1 {
+  top: 40px;
+  left: 40px;
+}
+
+.dataCard2 {
+  bottom: 40px;
+  right: 40px;
+}
+
+.barcode {
+  position: absolute;
+  width: 80px;
+  height: 120px;
+  background: repeating-linear-gradient(
+    0deg,
+    #B39DDB 0px,
+    #B39DDB 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.4;
+  animation: pulseSlow 3s ease-in-out infinite;
+}
+
+.barcodeRight {
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+}
+
+.wireframeGrid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background-image: 
+    linear-gradient(rgba(179, 157, 219, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(179, 157, 219, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  animation: driftGrid 20s linear infinite;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #E1BEE7;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(225, 190, 231, 0.8);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.star1 { top: 15%; left: 15%; animation-delay: 0s; }
+.star2 { top: 25%; right: 20%; animation-delay: 0.5s; }
+.star3 { bottom: 20%; left: 20%; animation-delay: 1s; }
+.star4 { bottom: 30%; right: 15%; animation-delay: 1.5s; }
+
+.hexagon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid #9575CD;
+  background: transparent;
+  animation: rotateHexagon 10s linear infinite;
+}
+
+.hexagon1 { top: 25%; left: 10%; }
+.hexagon2 { bottom: 25%; right: 10%; animation-delay: 5s; }
+
+.shard {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid rgba(199, 167, 255, 0.15);
+  animation: floatShard 8s ease-in-out infinite;
+}
+
+.shard1 { top: 10%; left: 5%; animation-delay: 0s; }
+.shard2 { top: 50%; right: 8%; animation-delay: 2s; }
+.shard3 { bottom: 15%; left: 12%; animation-delay: 4s; }
+.shard4 { top: 70%; right: 85%; animation-delay: 6s; }
+
+.verticalBar {
+  position: absolute;
+  width: 3px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, #C7A7FF, transparent);
+  opacity: 0.3;
+  animation: pulseBar 2s ease-in-out infinite;
+}
+
+.bar1 { top: 30%; left: 25%; }
+.bar2 { bottom: 30%; right: 30%; animation-delay: 1s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes floatShard {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes rotateHexagon {
+  0% { transform: rotate(0deg); opacity: 0.4; }
+  50% { opacity: 0.7; }
+  100% { transform: rotate(360deg); opacity: 0.4; }
+}
+
+@keyframes pulseBar {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 0.6; transform: scaleY(1.2); }
+}
+
+@keyframes driftGrid {
+  0% { transform: translate(-50%, -50%) translate(0, 0); }
+  100% { transform: translate(-50%, -50%) translate(20px, 20px); }
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    padding: 24px 20px;
+  }
+
+  .headerText {
+    font-size: 14px;
+  }
+
+  .contactLink {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .contactPlatform {
+    min-width: auto;
+  }
+
+  .dataCard1,
+  .dataCard2 {
+    display: none;
+  }
+
+  .wireframeGrid {
+    width: 200px;
+    height: 200px;
+  }
+
+  .shard,
+  .hexagon,
+  .verticalBar {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+}

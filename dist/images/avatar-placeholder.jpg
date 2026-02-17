@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF00A5;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#FF00A5;stop-opacity:0.4"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)"/>
+  
+  <!-- Grid pattern -->
+  <g stroke="#FF00A5" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+  </g>
+  
+  <!-- Avatar silhouette -->
+  <g filter="url(#glow)">
+    <!-- Head -->
+    <circle cx="200" cy="150" r="60" fill="none" stroke="#FF00A5" stroke-width="3"/>
+    
+    <!-- Body -->
+    <path d="M 140 220 Q 140 260, 160 280 L 240 280 Q 260 260, 260 220 Z" 
+          fill="none" stroke="#FF00A5" stroke-width="3"/>
+    
+    <!-- Shoulders -->
+    <path d="M 120 220 L 140 220 M 260 220 L 280 220" 
+          stroke="#FF00A5" stroke-width="3"/>
+  </g>
+  
+  <!-- Glitch lines -->
+  <g stroke="#00FFFF" stroke-width="2" opacity="0.6">
+    <line x1="180" y1="140" x2="220" y2="140"/>
+    <line x1="170" y1="160" x2="230" y2="160"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="350" font-family="'Orbitron', monospace" font-size="20" 
+        fill="#FF00A5" text-anchor="middle" filter="url(#glow)">
+    KURDANT
+  </text>
+  
+  <!-- Corner brackets -->
+  <g stroke="#FF00A5" stroke-width="2" fill="none">
+    <path d="M 20 20 L 20 50 M 20 20 L 50 20"/>
+    <path d="M 380 20 L 350 20 M 380 20 L 380 50"/>
+    <path d="M 20 380 L 20 350 M 20 380 L 50 380"/>
+    <path d="M 380 380 L 380 350 M 380 380 L 350 380"/>
+  </g>
+</svg>

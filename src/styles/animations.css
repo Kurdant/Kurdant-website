@@ -1,0 +1,142 @@
+@keyframes glitch1 {
+  0%, 100% { transform: translate(0); }
+  33% { transform: translate(-2px, 2px); }
+  66% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch2 {
+  0%, 100% { transform: translate(0); }
+  33% { transform: translate(2px, -2px); }
+  66% { transform: translate(-2px, 2px); }
+}
+
+@keyframes glitchEntry {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+    filter: blur(10px);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateX(20px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-10px);
+    filter: blur(0px);
+  }
+  60% {
+    transform: translateX(5px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes organicFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-25px) translateX(5px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px var(--color-primary-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px var(--color-primary-glow));
+  }
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) translateX(var(--drift));
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillBarFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--skill-width);
+  }
+}
+
+@keyframes glowSlide {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes lineGrow {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 0 30px var(--color-primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 50px var(--color-primary-glow);
+  }
+}
+
+@keyframes orbExpand {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(var(--orb-y)) translateX(var(--orb-x)) scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

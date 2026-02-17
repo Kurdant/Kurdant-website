@@ -1,0 +1,52 @@
+:root {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-gray-light: #CCCCCC;
+  --color-gray-mid: #999999;
+  --color-gray-dark: #666666;
+}
+
+[data-page="home"] {
+  --color-primary: #D1C4E9;
+  --color-primary-dark: #B39DDB;
+  --color-primary-light: #E1BEE7;
+  --color-primary-pale: #F3E5F5;
+  --color-primary-glow: rgba(209, 196, 233, 0.5);
+  --color-secondary: #80DEEA;
+}
+
+[data-page="about"] {
+  --color-primary: #FF00A5;
+  --color-primary-dark: #CC0084;
+  --color-primary-light: #FF33B8;
+  --color-primary-pale: #FF66CB;
+  --color-primary-glow: rgba(255, 0, 165, 0.5);
+  --color-secondary: #00FFFF;
+}
+
+[data-page="blog"] {
+  --color-primary: #FFFFFF;
+  --color-primary-dark: #EEEEEE;
+  --color-primary-light: #FFFFFF;
+  --color-primary-pale: #F5F5F5;
+  --color-primary-glow: rgba(255, 255, 255, 0.3);
+  --color-secondary: #CCCCCC;
+}
+
+[data-page="arcade"] {
+  --color-primary: #00FF41;
+  --color-primary-dark: #00CC34;
+  --color-primary-light: #33FF66;
+  --color-primary-pale: #66FF8C;
+  --color-primary-glow: rgba(0, 255, 65, 0.4);
+  --color-secondary: #00FFFF;
+}
+
+[data-page="contact"] {
+  --color-primary: #30FAFF;
+  --color-primary-dark: #00D4E0;
+  --color-primary-light: #66FCFF;
+  --color-primary-pale: #99FDFF;
+  --color-primary-glow: rgba(48, 250, 255, 0.4);
+  --color-secondary: #FF00A5;
+}

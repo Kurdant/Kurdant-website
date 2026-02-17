@@ -1,0 +1,20 @@
+.gamePlay {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--color-lavender-soft);
+  text-shadow: 
+    0 0 10px rgba(209, 196, 233, 0.6),
+    0 0 20px rgba(209, 196, 233, 0.4);
+  margin-bottom: var(--spacing-2xl);
+}

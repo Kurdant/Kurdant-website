@@ -1,0 +1,90 @@
+.dataCard {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dataCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0.5;
+}
+
+.icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 20px var(--color-primary-glow));
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.description {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary-glow);
+  animation: scanlineMove 3s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes scanlineMove {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .dataCard {
+    padding: 24px 16px;
+  }
+  
+  .icon {
+    font-size: 36px;
+  }
+  
+  .title {
+    font-size: 16px;
+  }
+  
+  .description {
+    font-size: 14px;
+  }
+}

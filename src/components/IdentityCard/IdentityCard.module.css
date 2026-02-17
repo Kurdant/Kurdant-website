@@ -1,0 +1,400 @@
+.identitySection {
+  position: relative;
+  padding: clamp(80px, 10vw, 120px) 24px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.mainCard {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  padding: 48px;
+  background: rgba(17, 17, 17, 0.8);
+  border: 1px solid #B39DDB;
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(179, 157, 219, 0.3),
+    inset 0 0 50px rgba(179, 157, 219, 0.05);
+  position: relative;
+}
+
+.mainCard::before,
+.mainCard::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #C7A7FF;
+}
+
+.mainCard::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.mainCard::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+.photoWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.photoPlaceholder {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, rgba(199, 167, 255, 0.2), rgba(179, 157, 219, 0.1));
+  border: 2px solid #D1C4E9;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 30px rgba(209, 196, 233, 0.4),
+    0 0 60px rgba(199, 167, 255, 0.2),
+    inset 0 0 80px rgba(225, 190, 231, 0.1);
+}
+
+.initials {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: #E1BEE7;
+  text-shadow: 
+    0 0 10px #E1BEE7,
+    0 0 20px #C7A7FF,
+    0 0 40px #B39DDB;
+  z-index: 2;
+}
+
+.scanlineOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 3px
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.infoCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #9575CD;
+}
+
+.dataLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #B39DDB;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.subject {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  color: #C7A7FF;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: #E1BEE7;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 
+    0 0 10px rgba(225, 190, 231, 0.6),
+    0 0 20px rgba(199, 167, 255, 0.4);
+}
+
+.role, .specialty {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: #D1C4E9;
+  margin: 0;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.detailRow {
+  display: flex;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}
+
+.label {
+  color: #B39DDB;
+  min-width: 100px;
+}
+
+.value {
+  color: #E1BEE7;
+}
+
+.statusActive {
+  color: #00ff41;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+}
+
+.bioText {
+  max-width: 600px;
+  margin: 48px auto 0;
+  padding: 32px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #9575CD;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+}
+
+.bioText p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #D1C4E9;
+  margin: 0;
+}
+
+.overlays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.dataCard {
+  position: absolute;
+  padding: 16px;
+  background: rgba(17, 17, 17, 0.8);
+  border: 1px solid #9575CD;
+  backdrop-filter: blur(8px);
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 0 15px rgba(149, 117, 205, 0.3);
+}
+
+.dataCardHeader {
+  font-size: 10px;
+  color: #9575CD;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.dataCardContent {
+  font-size: 12px;
+  color: #C7A7FF;
+  font-weight: 600;
+}
+
+.timestamp, .coordinates {
+  font-size: 9px;
+  color: #B39DDB;
+  margin-top: 4px;
+}
+
+.dataCardTopLeft {
+  top: 40px;
+  left: 40px;
+}
+
+.dataCardBottomRight {
+  bottom: 40px;
+  right: 40px;
+}
+
+.barcode {
+  position: absolute;
+  width: 80px;
+  height: 120px;
+  background: repeating-linear-gradient(
+    90deg,
+    #B39DDB 0px,
+    #B39DDB 2px,
+    transparent 2px,
+    transparent 4px,
+    #B39DDB 4px,
+    #B39DDB 5px,
+    transparent 5px,
+    transparent 8px
+  );
+  opacity: 0.4;
+  animation: pulseSlow 3s ease-in-out infinite;
+}
+
+.barcodeTopRight {
+  top: 40px;
+  right: 40px;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #E1BEE7;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(225, 190, 231, 0.8);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.star1 { top: 20%; left: 10%; animation-delay: 0s; }
+.star2 { top: 30%; right: 15%; animation-delay: 0.3s; }
+.star3 { bottom: 25%; left: 20%; animation-delay: 0.6s; }
+.star4 { top: 60%; right: 25%; animation-delay: 0.9s; }
+.star5 { bottom: 15%; right: 10%; animation-delay: 1.2s; }
+
+.shard {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid rgba(199, 167, 255, 0.15);
+  animation: floatShard 8s ease-in-out infinite;
+}
+
+.shard1 { top: 15%; left: 5%; animation-delay: 0s; }
+.shard2 { top: 40%; right: 8%; animation-delay: 2s; }
+.shard3 { bottom: 20%; left: 15%; animation-delay: 4s; }
+.shard4 { top: 70%; right: 20%; animation-delay: 6s; }
+
+.hexagon {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid #9575CD;
+  background: transparent;
+  animation: rotateHexagon 10s linear infinite;
+}
+
+.hexagon1 { top: 25%; left: 80%; }
+.hexagon2 { bottom: 30%; left: 10%; animation-delay: 5s; }
+
+.wireframeGrid {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-image: 
+    linear-gradient(rgba(179, 157, 219, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(179, 157, 219, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  animation: driftGrid 15s linear infinite;
+}
+
+.wireframe1 { top: 10%; left: 50%; transform: translate(-50%, 0); }
+.wireframe2 { bottom: 20%; left: 20%; animation-delay: 5s; }
+.wireframe3 { top: 50%; right: 10%; animation-delay: 10s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes floatShard {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes rotateHexagon {
+  0% { transform: rotate(0deg); opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { transform: rotate(360deg); opacity: 0.5; }
+}
+
+@keyframes driftGrid {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+@media (max-width: 768px) {
+  .mainCard {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .photoPlaceholder {
+    width: 180px;
+    height: 180px;
+  }
+
+  .initials {
+    font-size: 54px;
+  }
+
+  .bioText {
+    padding: 24px;
+  }
+
+  .dataCardTopLeft,
+  .dataCardBottomRight {
+    display: none;
+  }
+
+  .shard,
+  .hexagon,
+  .wireframeGrid {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}

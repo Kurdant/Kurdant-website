@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURDANT DEV - Hero Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender-soft: #D1C4E9;
+            --lavender-medium: #B39DDB;
+            --lavender-light: #E1BEE7;
+            --lavender-dark: #9575CD;
+            --cyan-soft: #80DEEA;
+            --pink-soft: #F48FB1;
+            --true-black: #000000;
+            --near-black: #0A0A0A;
+            --white: #FFFFFF;
+            --muted: #9E9E9E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--true-black);
+            color: var(--white);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* SCANLINES EFFECT */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.5;
+        }
+
+        /* GRAIN/NOISE EFFECT */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="3.5" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 998;
+        }
+
+        /* HERO CONTAINER */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        /* WIREFRAME BACKGROUND */
+        .wireframe-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border: 2px solid var(--lavender-dark);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
+        }
+
+        .wireframe-bg::before,
+        .wireframe-bg::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid var(--lavender-dark);
+            border-radius: 50%;
+        }
+
+        .wireframe-bg::before {
+            width: 70%;
+            height: 70%;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        .wireframe-bg::after {
+            width: 40%;
+            height: 40%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* GRID OVERLAY */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(181, 157, 219, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(181, 157, 219, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* MAIN TITLE */
+        .title-main {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(60px, 15vw, 180px);
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            color: var(--lavender-soft);
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 1rem;
+            text-shadow: 
+                0 0 20px rgba(209, 196, 233, 0.8),
+                0 0 40px rgba(209, 196, 233, 0.6),
+                0 0 60px rgba(209, 196, 233, 0.4),
+                0 0 80px rgba(209, 196, 233, 0.2);
+            animation: glitch 3s infinite;
+        }
+
+        /* GLITCH EFFECT */
+        @keyframes glitch {
+            0%, 90%, 100% {
+                transform: translate(0);
+                text-shadow: 
+                    0 0 20px rgba(209, 196, 233, 0.8),
+                    0 0 40px rgba(209, 196, 233, 0.6),
+                    0 0 60px rgba(209, 196, 233, 0.4);
+            }
+            91% {
+                transform: translate(-2px, 2px);
+                text-shadow: 
+                    2px 0 rgba(128, 222, 234, 0.8),
+                    -2px 0 rgba(244, 143, 177, 0.8);
+            }
+            92% {
+                transform: translate(2px, -2px);
+                text-shadow: 
+                    -2px 0 rgba(128, 222, 234, 0.8),
+                    2px 0 rgba(244, 143, 177, 0.8);
+            }
+            93% {
+                transform: translate(0);
+            }
+        }
+
+        /* SUBTITLE */
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(20px, 4vw, 36px);
+            font-weight: 300;
+            color: var(--muted);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            letter-spacing: 0.1em;
+        }
+
+        /* FLOATING ELEMENTS */
+        .floating-element {
+            position: absolute;
+            border: 1px solid var(--lavender-dark);
+            opacity: 0.3;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .hex-1 {
+            top: 15%;
+            left: 10%;
+            width: 80px;
+            height: 92px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(209, 196, 233, 0.05);
+            animation-name: float1;
+        }
+
+        .hex-2 {
+            top: 60%;
+            right: 15%;
+            width: 60px;
+            height: 69px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(128, 222, 234, 0.05);
+            animation-name: float2;
+            animation-duration: 15s;
+        }
+
+        .square-1 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            height: 50px;
+            background: rgba(244, 143, 177, 0.05);
+            animation-name: float3;
+            animation-duration: 18s;
+        }
+
+        .square-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 70px;
+            height: 70px;
+            background: rgba(209, 196, 233, 0.05);
+            transform: rotate(45deg);
+            animation-name: float1;
+            animation-duration: 22s;
+        }
+
+        .circle-1 {
+            top: 25%;
+            right: 20%;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(128, 222, 234, 0.03);
+            animation-name: float2;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-20px) translateY(-20px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(30px) rotate(90deg); }
+        }
+
+        /* DATA CARD OVERLAY */
+        .data-card {
+            position: absolute;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--lavender-dark);
+            padding: 1rem;
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            color: var(--lavender-soft);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(209, 196, 233, 0.2);
+        }
+
+        .data-card-1 {
+            top: 10%;
+            right: 5%;
+            width: 180px;
+        }
+
+        .data-card-2 {
+            bottom: 10%;
+            left: 5%;
+            width: 200px;
+        }
+
+        .data-card-title {
+            color: var(--lavender-light);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .data-card-content {
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .barcode {
+            position: absolute;
+            bottom: 5%;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 2px;
+        }
+
+        .barcode-line {
+            width: 3px;
+            height: 40px;
+            background: var(--lavender-dark);
+            opacity: 0.4;
+        }
+
+        .barcode-line:nth-child(odd) {
+            height: 50px;
+        }
+
+        /* STARS */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--lavender-light);
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(225, 190, 231, 0.8);
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .star-1 { top: 20%; left: 15%; animation-delay: 0s; }
+        .star-2 { top: 35%; right: 25%; animation-delay: 0.5s; }
+        .star-3 { bottom: 30%; left: 20%; animation-delay: 1s; }
+        .star-4 { top: 50%; right: 10%; animation-delay: 1.5s; }
+        .star-5 { bottom: 20%; right: 30%; animation-delay: 0.7s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .data-card {
+                display: none;
+            }
+            
+            .wireframe-bg {
+                width: 400px;
+                height: 400px;
+            }
+
+            .floating-element {
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- GRID OVERLAY -->
+    <div class="grid-overlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- WIREFRAME BACKGROUND -->
+        <div class="wireframe-bg"></div>
+
+        <!-- FLOATING ELEMENTS -->
+        <div class="floating-element hex-1"></div>
+        <div class="floating-element hex-2"></div>
+        <div class="floating-element square-1"></div>
+        <div class="floating-element square-2"></div>
+        <div class="floating-element circle-1"></div>
+
+        <!-- STARS -->
+        <div class="star star-1"></div>
+        <div class="star star-2"></div>
+        <div class="star star-3"></div>
+        <div class="star star-4"></div>
+        <div class="star star-5"></div>
+
+        <!-- DATA CARDS -->
+        <div class="data-card data-card-1">
+            <div class="data-card-title">SYSTEM STATUS</div>
+            <div class="data-card-content">
+                [ONLINE]<br>
+                CONNECTIONS: 247<br>
+                LATENCY: 12ms<br>
+                STATUS: ACTIVE
+            </div>
+        </div>
+
+        <div class="data-card data-card-2">
+            <div class="data-card-title">WORLD WIDE</div>
+            <div class="data-card-content">
+                ALL RIGHTS RESERVED<br>
+                2026 KURDANT.FR<br>
+                VERSION 1.0.0
+            </div>
+        </div>
+
+        <!-- BARCODE -->
+        <div class="barcode">
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+            <div class="barcode-line"></div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <h1 class="title-main">KURDANT DEV</h1>
+        <p class="subtitle">je dev tout</p>
+    </section>
+</body>
+</html>

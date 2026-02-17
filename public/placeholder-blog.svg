@@ -1,0 +1,45 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bg)"/>
+  
+  <!-- Grid pattern -->
+  <g stroke="#9575CD" stroke-width="1" opacity="0.1">
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="600" x2="800" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="800"/>
+    <line x1="400" y1="0" x2="400" y2="800"/>
+    <line x1="600" y1="0" x2="600" y2="800"/>
+  </g>
+  
+  <!-- Center icon -->
+  <g transform="translate(400, 400)">
+    <!-- Document icon -->
+    <rect x="-80" y="-100" width="160" height="200" fill="none" stroke="#D1C4E9" stroke-width="4" rx="8"/>
+    <line x1="-60" y1="-70" x2="60" y2="-70" stroke="#D1C4E9" stroke-width="3"/>
+    <line x1="-60" y1="-40" x2="60" y2="-40" stroke="#D1C4E9" stroke-width="3"/>
+    <line x1="-60" y1="-10" x2="60" y2="-10" stroke="#D1C4E9" stroke-width="3"/>
+    <line x1="-60" y1="20" x2="40" y2="20" stroke="#D1C4E9" stroke-width="3"/>
+  </g>
+  
+  <!-- Scanlines effect -->
+  <rect width="800" height="800" fill="url(#scanlines)" opacity="0.1"/>
+  <defs>
+    <pattern id="scanlines" x="0" y="0" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1" height="2" fill="#000000"/>
+      <rect y="2" width="1" height="2" fill="transparent"/>
+    </pattern>
+  </defs>
+  
+  <!-- Text -->
+  <text x="400" y="550" font-family="Arial, sans-serif" font-size="24" fill="#D1C4E9" text-anchor="middle" opacity="0.5">
+    BLOG IMAGE
+  </text>
+</svg>

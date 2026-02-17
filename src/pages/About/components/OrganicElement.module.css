@@ -1,0 +1,60 @@
+.organicElement {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  animation: organicFloat 8s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 15px var(--color-primary-glow));
+  opacity: 0.6;
+}
+
+.small {
+  width: 80px;
+  height: 120px;
+}
+
+.medium {
+  width: 150px;
+  height: 225px;
+}
+
+.large {
+  width: 200px;
+  height: 300px;
+}
+
+@keyframes organicFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .organicElement {
+    opacity: 0.5;
+  }
+  
+  .large {
+    width: 120px;
+    height: 180px;
+  }
+  
+  .medium {
+    width: 100px;
+    height: 150px;
+  }
+}

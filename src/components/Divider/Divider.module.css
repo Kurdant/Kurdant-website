@@ -1,0 +1,312 @@
+.divider {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.dataStream {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.streamText {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #B39DDB;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blocks {
+  color: #C7A7FF;
+  font-size: 14px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loadingText {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.progressBar {
+  width: 200px;
+  height: 8px;
+  background: rgba(179, 157, 219, 0.2);
+  border: 1px solid #9575CD;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #C7A7FF, #B39DDB);
+  box-shadow: 0 0 10px rgba(199, 167, 255, 0.6);
+}
+
+.percentage {
+  color: #C7A7FF;
+  font-size: 11px;
+}
+
+.glitchLine {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.glitchSegments {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  animation: glitchFlicker 0.5s step-start infinite;
+}
+
+.glitchBlock {
+  color: #C7A7FF;
+}
+
+.glitchSpace {
+  color: #9575CD;
+  opacity: 0.5;
+}
+
+.elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #E1BEE7;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(225, 190, 231, 0.8);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.starLeft {
+  left: 15%;
+}
+
+.starRight {
+  right: 15%;
+}
+
+.starCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hexagonCenter {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid #9575CD;
+  background: transparent;
+  animation: rotateHexagon 8s linear infinite;
+}
+
+.hexagonSmall {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid #9575CD;
+  background: transparent;
+  animation: rotateHexagon 8s linear infinite;
+  left: 45%;
+}
+
+.shard {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid rgba(199, 167, 255, 0.2);
+}
+
+.shard1 {
+  top: 20%;
+  left: 30%;
+  transform: rotate(-15deg);
+}
+
+.shard2 {
+  bottom: 20%;
+  right: 30%;
+  transform: rotate(15deg);
+}
+
+.shardGlitch1 {
+  top: 15%;
+  left: 25%;
+  transform: rotate(-25deg);
+}
+
+.shardGlitch2 {
+  bottom: 15%;
+  right: 25%;
+  transform: rotate(25deg);
+}
+
+.wireframeGridSmall {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: 
+    linear-gradient(rgba(179, 157, 219, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(179, 157, 219, 0.15) 1px, transparent 1px);
+  background-size: 25px 25px;
+  opacity: 0.4;
+  animation: gridFade 2s ease-in-out infinite;
+}
+
+.bar {
+  position: absolute;
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, #C7A7FF, transparent);
+  opacity: 0.4;
+  animation: pulseBar 1.5s ease-in-out infinite;
+}
+
+.barLeft {
+  left: 25%;
+}
+
+.barRight {
+  right: 25%;
+  animation-delay: 0.75s;
+}
+
+.line {
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #B39DDB, transparent);
+  opacity: 0.5;
+}
+
+.dataCardSmall {
+  position: absolute;
+  padding: 8px 12px;
+  background: rgba(17, 17, 17, 0.8);
+  border: 1px solid #9575CD;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C7A7FF;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dataLeft {
+  left: 10%;
+}
+
+.dataRight {
+  right: 10%;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes rotateHexagon {
+  0% { transform: rotate(0deg); opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { transform: rotate(360deg); opacity: 0.5; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glitchFlicker {
+  0%, 100% { opacity: 1; transform: translateX(0); }
+  25% { opacity: 0.8; transform: translateX(-2px); }
+  50% { opacity: 1; transform: translateX(2px); }
+  75% { opacity: 0.9; transform: translateX(-1px); }
+}
+
+@keyframes gridFade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes pulseBar {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 0.7; transform: scaleY(1.3); }
+}
+
+@media (max-width: 768px) {
+  .divider {
+    height: 80px;
+  }
+
+  .streamText {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .progressBar {
+    width: 100px;
+  }
+
+  .glitchSegments {
+    font-size: 12px;
+  }
+
+  .hexagonCenter,
+  .hexagonSmall {
+    width: 25px;
+    height: 25px;
+  }
+
+  .shard {
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 20px;
+  }
+
+  .bar {
+    height: 30px;
+  }
+
+  .dataCardSmall {
+    font-size: 8px;
+    padding: 6px 8px;
+  }
+}

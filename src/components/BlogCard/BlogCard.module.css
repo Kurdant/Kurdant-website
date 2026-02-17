@@ -1,0 +1,191 @@
+.blogCard {
+  background: #121212;
+  border: 1px solid #9575CD;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.blogCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(209, 196, 233, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blogCard:hover {
+  border-color: #D1C4E9;
+  box-shadow: 
+    0 0 15px rgba(209, 196, 233, 0.6),
+    0 0 30px rgba(209, 196, 233, 0.4),
+    0 0 45px rgba(209, 196, 233, 0.2);
+  transform: translateY(-8px);
+}
+
+.blogCard:hover::before {
+  opacity: 1;
+}
+
+.blogCard::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(209, 196, 233, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blogCard:active::after {
+  width: 300%;
+  height: 300%;
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #0A0A0A;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+.blogCard:hover .cardImage {
+  transform: scale(1.1);
+  filter: grayscale(0) brightness(1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.blogCard:hover .imageOverlay {
+  opacity: 0.3;
+}
+
+.cardContent {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cardTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.blogCard:hover .cardTitle {
+  color: #D1C4E9;
+  text-shadow: 0 0 10px rgba(209, 196, 233, 0.5);
+}
+
+.cardDescription {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #9E9E9E;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(209, 196, 233, 0.1);
+  border: 1px solid #9575CD;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.625rem;
+  color: #D1C4E9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.blogCard:hover .tag {
+  background: rgba(209, 196, 233, 0.2);
+  border-color: #D1C4E9;
+  box-shadow: 0 0 8px rgba(209, 196, 233, 0.3);
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(149, 117, 205, 0.2);
+}
+
+.cardDate {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #9E9E9E;
+  letter-spacing: 0.05em;
+}
+
+.blogCard:focus {
+  outline: 2px solid #D1C4E9;
+  outline-offset: 4px;
+}
+
+.blogCard:focus-visible {
+  outline: 2px solid #D1C4E9;
+  outline-offset: 4px;
+  box-shadow: 
+    0 0 15px rgba(209, 196, 233, 0.6),
+    0 0 30px rgba(209, 196, 233, 0.4),
+    0 0 45px rgba(209, 196, 233, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blogCard,
+  .cardImage,
+  .imageOverlay,
+  .cardTitle,
+  .tag {
+    animation: none !important;
+    transition: none !important;
+  }
+}
