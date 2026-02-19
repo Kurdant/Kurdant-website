@@ -47,7 +47,7 @@ function BlogCard({ post }) {
         <h3 className={styles.cardTitle}>{post.title}</h3>
         
         <p className={styles.cardDescription}>
-          {post.description || post.excerpt || 'Découvrez cet article...'}
+          {post.excerpt || 'Decouvrez cet article...'}
         </p>
 
         {post.tags && post.tags.length > 0 && (
@@ -62,7 +62,7 @@ function BlogCard({ post }) {
 
         <div className={styles.cardFooter}>
           <span className={styles.cardDate}>
-            {formatDate(post.publishedAt || post.createdAt)}
+            {formatDate(post.date)}
           </span>
         </div>
       </div>

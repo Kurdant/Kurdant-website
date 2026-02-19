@@ -1,6 +1,6 @@
 .blogCard {
   background: #121212;
-  border: 1px solid #9575CD;
+  border: 1px solid #FFFFFF;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -15,7 +15,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(209, 196, 233, 0.05) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -23,11 +23,11 @@
 }
 
 .blogCard:hover {
-  border-color: #D1C4E9;
+  border-color: #FFFFFF;
   box-shadow: 
-    0 0 15px rgba(209, 196, 233, 0.6),
-    0 0 30px rgba(209, 196, 233, 0.4),
-    0 0 45px rgba(209, 196, 233, 0.2);
+    0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 45px rgba(255, 255, 255, 0.2);
   transform: translateY(-8px);
 }
 
@@ -43,7 +43,7 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(209, 196, 233, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
   pointer-events: none;
@@ -108,8 +108,8 @@
 }
 
 .blogCard:hover .cardTitle {
-  color: #D1C4E9;
-  text-shadow: 0 0 10px rgba(209, 196, 233, 0.5);
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .cardDescription {
@@ -133,21 +133,21 @@
 
 .tag {
   padding: 0.25rem 0.75rem;
-  background: rgba(209, 196, 233, 0.1);
-  border: 1px solid #9575CD;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #FFFFFF;
   border-radius: 4px;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.625rem;
-  color: #D1C4E9;
+  color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all 0.2s ease;
 }
 
 .blogCard:hover .tag {
-  background: rgba(209, 196, 233, 0.2);
-  border-color: #D1C4E9;
-  box-shadow: 0 0 8px rgba(209, 196, 233, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .cardFooter {
@@ -155,7 +155,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid rgba(149, 117, 205, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .cardDate {
@@ -166,17 +166,17 @@
 }
 
 .blogCard:focus {
-  outline: 2px solid #D1C4E9;
+  outline: 2px solid #FFFFFF;
   outline-offset: 4px;
 }
 
 .blogCard:focus-visible {
-  outline: 2px solid #D1C4E9;
+  outline: 2px solid #FFFFFF;
   outline-offset: 4px;
   box-shadow: 
-    0 0 15px rgba(209, 196, 233, 0.6),
-    0 0 30px rgba(209, 196, 233, 0.4),
-    0 0 45px rgba(209, 196, 233, 0.2);
+    0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 45px rgba(255, 255, 255, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

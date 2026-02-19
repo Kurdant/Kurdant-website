@@ -1,71 +1,30 @@
 import { useEffect, useState } from 'react';
-import { useWisp } from '../hooks/useWisp';
+import { useLocalBlog } from '../hooks/useLocalBlog';
 import BlogCard from '../components/BlogCard/BlogCard';
 import styles from './Blog.module.css';
 
 const FILTERS = [
   { id: 'all', label: 'Tout afficher' },
   { id: 'dev', label: 'Dev' },
-  { id: 'gaming', label: 'Jeux Vidéo' },
-  { id: 'ai', label: 'IA' },
-  { id: 'other', label: 'Autres' }
+  { id: 'jeux-video', label: 'Jeux Video' },
+  { id: 'ia', label: 'IA' },
+  { id: 'autre', label: 'Autres' }
 ];
 
 function Blog() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 10;
-
-  const { posts, loading, error, totalPages } = useWisp(activeFilter, currentPage, postsPerPage);
+  const { blogs, getBlogsByCategory } = useLocalBlog();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-page', 'blog');
   }, []);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
+  const filteredBlogs = activeFilter === 'all' 
+    ? blogs 
+    : getBlogsByCategory(activeFilter);
 
   const handleFilterChange = (filterId) => {
     setActiveFilter(filterId);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const renderPaginationNumbers = () => {
-    const pages = [];
-    const maxVisible = 5;
-
-    if (totalPages <= maxVisible) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      if (currentPage <= 3) {
-        pages.push(1, 2, 3, 4, '...', totalPages);
-      } else if (currentPage >= totalPages - 2) {
-        pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
-      } else {
-        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
-      }
-    }
-
-    return pages;
   };
 
   return (
@@ -76,7 +35,7 @@ function Blog() {
             BLOG
           </h1>
           <p className={styles.blogSubtitle}>
-            Découvrez mes articles techniques et créatifs
+            Decouvrez mes articles techniques et creatifs
           </p>
         </div>
       </section>
@@ -100,31 +59,17 @@ function Blog() {
 
       <section className={styles.blogGrid}>
         <div className={styles.container}>
-          {loading && (
-            <div className={styles.loading}>
-              <div className={styles.spinner}></div>
-              <p>Chargement des articles...</p>
-            </div>
-          )}
-
-          {error && (
-            <div className={styles.error}>
-              <p>Erreur lors du chargement des articles.</p>
-              <p className={styles.errorDetail}>{error}</p>
-            </div>
-          )}
-
-          {!loading && !error && posts.length === 0 && (
+          {filteredBlogs.length === 0 && (
             <div className={styles.empty}>
-              <p>Aucun article trouvé pour cette catégorie.</p>
+              <p>Aucun article trouve pour cette categorie.</p>
             </div>
           )}
 
-          {!loading && !error && posts.length > 0 && (
+          {filteredBlogs.length > 0 && (
             <div className={styles.grid}>
-              {posts.map((post, index) => (
+              {filteredBlogs.map((post, index) => (
                 <div
-                  key={post.id || index}
+                  key={post.slug}
                   className={styles.gridItem}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -135,50 +80,6 @@ function Blog() {
           )}
         </div>
       </section>
-
-      {!loading && !error && posts.length > 0 && totalPages > 1 && (
-        <section className={styles.blogPagination}>
-          <div className={styles.container}>
-            <div className={styles.pagination}>
-              <button
-                className={styles.paginationArrow}
-                onClick={handlePrevPage}
-                disabled={currentPage === 1}
-                aria-label="Page précédente"
-              >
-                ←
-              </button>
-
-              {renderPaginationNumbers().map((page, index) => (
-                typeof page === 'number' ? (
-                  <button
-                    key={index}
-                    className={`${styles.paginationNumber} ${currentPage === page ? styles.active : ''}`}
-                    onClick={() => handlePageChange(page)}
-                    aria-label={`Page ${page}`}
-                    aria-current={currentPage === page ? 'page' : undefined}
-                  >
-                    {page}
-                  </button>
-                ) : (
-                  <span key={index} className={styles.paginationDots}>
-                    {page}
-                  </span>
-                )
-              ))}
-
-              <button
-                className={styles.paginationArrow}
-                onClick={handleNextPage}
-                disabled={currentPage === totalPages}
-                aria-label="Page suivante"
-              >
-                →
-              </button>
-            </div>
-          </div>
-        </section>
-      )}
     </main>
   );
 }
